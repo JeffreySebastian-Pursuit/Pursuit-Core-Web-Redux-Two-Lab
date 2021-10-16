@@ -2,8 +2,8 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 
 import "./App.css";
-import TodoApp from "./components/TodoApp";
-import rootReducer from "./reducers";
+import TodoApp from "./Components/TodoApp";
+import rootReducer from "./Reducers";
 
 function App() {
   return (
