@@ -3,11 +3,9 @@ import React from "react";
 const Form = ({ handleChange, handleSubmit, text }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label>Todo</label>
-        <input type="text" id="title" value={text} onChange={handleChange} />
-        <button type="submit">Save</button>
-      </div>
+      <label htmlFor='text'>Todo</label>
+      <input type="text" id="text" value={text} onChange={handleChange} />
+      <button type="submit">Save</button>
     </form>
   );
 };

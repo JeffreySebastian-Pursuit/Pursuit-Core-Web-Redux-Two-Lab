@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 import Form from "../components/Form";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,17 +12,19 @@ const FormContainer = () => {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
-  //   useEffect(() => {
-  //     const fetchTodos = async () => {
-  //       const url = "https://jsonplaceholder.typicode.com/todos";
-  //       let res = await axios.get(url);
+    useEffect(() => {
+      const fetchTodos = async () => {
+        const url = todos;
+        // debugger
+        let res = await axios.get(url);
+        debugger
+        const action = addTodos(res.data);
+        console.log(action)
+        dispatch(action);
+      };
 
-  //       const action = addTodos(res.data);
-  //       dispatch(action);
-  //     };
-
-  //     fetchTodos();
-  //   }, []);
+      fetchTodos();
+    }, []);
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -32,6 +34,7 @@ const FormContainer = () => {
     e.preventDefault();
     console.log("HANDLE SUBMIT");
     const nextId = todos.length ? todos[todos.length - 1].id + 1 : 1;
+    console.log(nextId)
 
     // const todoBody = "Dummy post data";
     // const userId = 7;
@@ -39,7 +42,7 @@ const FormContainer = () => {
     const action = addTodo({
       completed: false,
       id: nextId,
-      text: todos.text,
+      text: text,
     });
 
     // console.log('ABOUT TO DISPATCH', action);

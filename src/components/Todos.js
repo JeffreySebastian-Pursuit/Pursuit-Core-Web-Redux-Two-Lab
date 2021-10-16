@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Todos = ({ todos }) => {
+const Todos = ({ todos, setCompleted }) => {
+
+const toggleTodo = () => {
+setCompleted(true)
+
+}
   return (
     <ul>
       {todos.map((todo) => {
-        return <li key={todo.id}>{todo.text}</li>;
+        return <li key={todo.id} onClick={toggleTodo}>{todo.text}</li>;
       })}
       <Link to="/todos/new">Add New Todo</Link>
     </ul>
